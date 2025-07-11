@@ -1,8 +1,10 @@
 
  const request = require('postman-request')
  const geoCode = (address, callback) => {
-       const URL1 = 'https://api.positionstack.com/v1/forward?access_key=70b0c88212af82f6262053c5e08df5d0&query=' + encodeURIComponent(address) + '&limit=1'
-       request({url:URL1,json:true}, (error,{body}) =>{
+   const positionstackBaseUrl = process.env.POSITIONSTACK_BASE_URL;
+   const positionstackApiKey = process.env.POSITIONSTACK_API_KEY;
+       const URL1 = `${positionstackBaseUrl}?access_key=${positionstackApiKey}&query=${encodeURIComponent(address)}&limit=1`;
+       request({url:URL1,json:true}, (error,{body} ) =>{
          if(error){
             callback("unable to connect the network.....!", undefined)
          }else if(body.error || !body.data || body.data.length === 0 || !body){

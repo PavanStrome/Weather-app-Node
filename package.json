@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start":"node src/app.js",
-    "dev"  :"nodemon src/app.js"
+    "start": "node src/app.js",
+    "dev": "env-cmd -f ./config/dev.env nodemon src/app.js"
   },
   "keywords": [],
   "author": "",
@@ -15,5 +15,8 @@
     "mongoose": "^8.16.0",
     "postman-request": "^2.88.1-postman.42"
   },
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "env-cmd": "^10.1.0"
+  }
 }
